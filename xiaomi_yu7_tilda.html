@@ -1,0 +1,494 @@
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #E8B84B;
+  --text: #111111;
+  --text-muted: #888;
+  --text-light: #bbb;
+  --border: rgba(0,0,0,0.1);
+  --bg: #ffffff;
+  --bg-soft: #f5f4f2;
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: 'Manrope', sans-serif;
+  --max: 1200px;
+  --pad: clamp(20px, 5vw, 80px);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font); color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; }
+
+.label {
+  font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--text-light); font-weight: 500; margin-bottom: 20px; display: block;
+}
+.label-gold { color: rgba(232,184,75,0.5); }
+
+/* ─── HERO ─── */
+.hero {
+  background: #0d0d0d;
+  min-height: 100svh;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 70% 80% at 75% 40%, rgba(232,184,75,0.055) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 60% at 10% 90%, rgba(255,255,255,0.015) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.nav {
+  position: relative; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 28px var(--pad);
+  max-width: var(--max); margin: 0 auto; width: 100%;
+}
+.nav-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
+.nav-call { font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(232,184,75,0.3); padding-bottom: 2px; }
+
+.hero-body {
+  position: relative; z-index: 2; flex: 1;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  max-width: var(--max); margin: 0 auto;
+  padding: 32px var(--pad) 60px; width: 100%;
+}
+
+.hero-left { display: flex; flex-direction: column; }
+
+.eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 16px; }
+.hero-title { font-size: clamp(52px, 7vw, 96px); font-weight: 300; line-height: 0.92; letter-spacing: -3px; color: #fff; margin-bottom: 20px; }
+.hero-title strong { font-weight: 700; }
+.hero-subtitle { font-size: 13px; color: rgba(255,255,255,0.32); line-height: 1.65; margin-bottom: 28px; max-width: 380px; }
+
+.hero-utp { border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+.hutp-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; background: rgba(255,255,255,0.03); border-bottom: 1px solid rgba(255,255,255,0.06); }
+.hutp-item:last-child { border-bottom: none; }
+.hutp-icon { width: 28px; height: 28px; border-radius: 7px; background: rgba(232,184,75,0.1); border: 1px solid rgba(232,184,75,0.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hutp-name { font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 1px; }
+.hutp-desc { font-size: 11px; color: rgba(255,255,255,0.28); }
+
+.hero-saving-block { padding: 14px 16px; background: rgba(232,184,75,0.07); border: 1px solid rgba(232,184,75,0.2); border-radius: var(--radius-sm); margin-bottom: 20px; }
+.hero-saving-top { display: flex; align-items: baseline; gap: 8px; margin-bottom: 3px; }
+.hero-saving-label { font-size: 13px; color: rgba(255,255,255,0.38); }
+.hero-saving-val { font-size: 28px; font-weight: 700; letter-spacing: -1px; color: var(--gold); }
+.hero-saving-sub { font-size: 11px; color: rgba(255,255,255,0.22); }
+
+.cta-row { display: flex; gap: 10px; }
+.btn-primary { background: var(--gold); color: #111; border: none; border-radius: var(--radius-sm); padding: 14px 28px; font-family: var(--font); font-size: 13px; font-weight: 700; cursor: pointer; transition: opacity .15s; }
+.btn-primary:hover { opacity: 0.88; }
+.btn-outline { background: transparent; color: rgba(255,255,255,0.65); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius-sm); padding: 14px 24px; font-family: var(--font); font-size: 13px; cursor: pointer; transition: border-color .15s; }
+.btn-outline:hover { border-color: rgba(255,255,255,0.35); }
+
+.hero-right { display: flex; flex-direction: column; gap: 20px; }
+.car-visual img { width: 100%; height: auto; border-radius: 14px; display: block; object-fit: cover; }
+
+.hero-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: var(--radius-sm); overflow: hidden; }
+.hs-cell { background: rgba(255,255,255,0.03); padding: 14px 12px; }
+.hs-val { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.5px; line-height: 1; margin-bottom: 3px; }
+.hs-unit { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.3); }
+.hs-label { font-size: 10px; color: rgba(255,255,255,0.28); }
+
+/* ─── COND STRIP ─── */
+.cond-strip { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); }
+.cond-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: stretch; }
+.cond-item { flex: 1; display: flex; align-items: center; gap: 12px; padding: 20px 12px; }
+.cond-icon { flex-shrink: 0; }
+.cond-title { font-size: 12px; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.cond-sub { font-size: 10px; color: rgba(255,255,255,0.28); }
+.cond-div { width: 1px; background: rgba(255,255,255,0.07); margin: 14px 0; }
+
+/* ─── SECTION ─── */
+.sec { border-bottom: 1px solid var(--border); }
+.sec-inner { max-width: var(--max); margin: 0 auto; padding: clamp(40px, 5vw, 72px) var(--pad); }
+.sec-soft { background: var(--bg-soft); }
+.sec-dark { background: #0d0d0d; }
+
+/* ─── TRIMS ─── */
+.trims { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.trim { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; cursor: pointer; transition: border-color .18s; background: var(--bg); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.trim.active { border: 1.5px solid var(--text); }
+.trim-tag { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); background: var(--bg-soft); padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+.trim-tag-new { color: #1a6e3c; background: #edf7f1; }
+.trim-name { font-size: 18px; font-weight: 600; margin-bottom: 5px; }
+.trim-desc { font-size: 12px; color: var(--text-muted); line-height: 1.4; margin-bottom: 16px; }
+.trim-price-line { display: flex; align-items: baseline; gap: 5px; }
+.trim-from { font-size: 13px; color: var(--text-muted); }
+.trim-price { font-size: 28px; font-weight: 700; letter-spacing: -1px; }
+.trim-radio { width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 4px; display: flex; align-items: center; justify-content: center; transition: all .15s; }
+.trim.active .trim-radio { background: var(--text); border-color: var(--text); }
+.trim.active .trim-radio::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
+
+/* ─── FEATS ─── */
+.feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.feat { background: var(--bg-soft); border-radius: var(--radius-sm); padding: 20px; }
+.feat-val { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+.feat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ─── SAVINGS ─── */
+.sv-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.sv-heading { font-size: clamp(22px, 3vw, 36px); font-weight: 500; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 10px; }
+.sv-intro { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
+.sv-compare { display: flex; border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 12px; }
+.sv-price-block { flex: 1; padding: 20px 18px; }
+.sv-ours { background: #f8f8f8; }
+.sv-price-label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; font-weight: 500; }
+.sv-price-val { font-size: 20px; font-weight: 700; letter-spacing: -0.5px; }
+.sv-market-val { color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.2); }
+.sv-divider-col { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px 0; width: 36px; flex-shrink: 0; background: var(--bg); border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+.sv-vs-line { flex: 1; width: 1px; background: var(--border); }
+.sv-vs-badge { font-size: 10px; font-weight: 700; color: var(--text-light); letter-spacing: 1px; padding: 4px 0; }
+.sv-result { display: flex; justify-content: space-between; align-items: center; background: #111; border-radius: var(--radius-sm); padding: 18px 22px; }
+.sv-result-label { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.sv-result-sub { font-size: 11px; color: rgba(255,255,255,0.32); }
+.sv-result-val { font-size: 26px; font-weight: 700; letter-spacing: -1px; color: var(--gold); }
+.sv-sep { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.sv-sep::before, .sv-sep::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.sv-sep-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); font-weight: 500; white-space: nowrap; }
+.sv-bonus { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.sv-bonus-header { padding: 20px; border-bottom: 1px solid var(--border); }
+.sv-bonus-icon { width: 34px; height: 34px; background: var(--bg-soft); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.sv-bonus-title { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.3; }
+.sv-bonus-save { font-size: 12px; font-weight: 600; color: #1a7a3c; background: #edf7f1; display: inline-block; padding: 4px 12px; border-radius: 20px; }
+.sv-bonus-prices { display: flex; align-items: center; padding: 20px; }
+.sv-bp { flex: 1; }
+.sv-bp-place { font-size: 10px; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; font-weight: 500; margin-bottom: 5px; }
+.sv-bp-china .sv-bp-price { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+.sv-bp-moscow .sv-bp-price { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.2); }
+.sv-bp-arrow { color: var(--text-light); flex-shrink: 0; margin: 0 12px; }
+
+/* ─── УТП ─── */
+.utp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.utp-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.utp-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; margin-bottom: 12px; }
+.utp-name { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+.utp-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+.utp-steps { display: flex; flex-direction: column; gap: 8px; margin-top: 12px; }
+.utp-step { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+.utp-step-n { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--bg-soft); border: 1px solid var(--border); font-size: 10px; font-weight: 700; color: var(--text); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+
+/* ─── СЕРВИС ─── */
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.service-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
+.service-icon { width: 44px; height: 44px; background: var(--bg-soft); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+.service-name { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
+
+/* ─── FORM ─── */
+.form-wrap { background: #0d0d0d; }
+.form-inner { max-width: var(--max); margin: 0 auto; padding: clamp(40px, 5vw, 72px) var(--pad); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.form-heading { font-size: clamp(26px, 3.5vw, 44px); font-weight: 500; letter-spacing: -1px; color: #fff; margin-bottom: 10px; line-height: 1.05; }
+.form-sub { font-size: 14px; color: rgba(255,255,255,0.3); line-height: 1.6; margin-bottom: 32px; }
+.form-promise { display: flex; flex-direction: column; gap: 12px; }
+.fp-item { display: flex; align-items: center; gap: 10px; }
+.fp-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+.fp-text { font-size: 13px; color: rgba(255,255,255,0.4); }
+.form-card { background: var(--bg); border-radius: var(--radius); padding: 28px; }
+.chip-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; font-weight: 500; display: block; }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.chip { padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); font-family: var(--font); font-size: 12px; color: var(--text-muted); background: var(--bg); cursor: pointer; transition: all .15s; }
+.chip.on { border-color: var(--text); color: var(--text); font-weight: 600; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.field-full { grid-column: 1 / -1; }
+input[type=text], input[type=tel] { width: 100%; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px 14px; font-family: var(--font); font-size: 14px; color: var(--text); outline: none; transition: border-color .15s; -webkit-appearance: none; }
+input:focus { border-color: #999; background: var(--bg); }
+input::placeholder { color: var(--text-light); }
+.submit { width: 100%; margin-top: 14px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); padding: 15px; font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity .15s; }
+.submit:hover { opacity: 0.82; }
+.form-legal { font-size: 10px; color: var(--text-light); line-height: 1.6; margin-top: 10px; }
+
+/* ─── FOOTER ─── */
+.footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); padding: 22px var(--pad); }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+.footer-text { font-size: 10px; color: rgba(255,255,255,0.18); line-height: 1.6; max-width: 620px; }
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-left > * { animation: fadeUp .6s ease both; }
+.hero-left > :nth-child(1) { animation-delay: .05s; }
+.hero-left > :nth-child(2) { animation-delay: .1s; }
+.hero-left > :nth-child(3) { animation-delay: .15s; }
+.hero-left > :nth-child(4) { animation-delay: .2s; }
+.hero-left > :nth-child(5) { animation-delay: .25s; }
+.hero-left > :nth-child(6) { animation-delay: .3s; }
+.hero-right { animation: fadeUp .7s .15s ease both; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 800px) {
+  :root { --pad: 20px; }
+  .hero-body { grid-template-columns: 1fr; gap: 28px; padding-bottom: 40px; }
+  .hero-right { order: -1; }
+  .hero-title { font-size: 52px; letter-spacing: -2px; }
+  .hero-subtitle { max-width: 100%; }
+  .cond-inner { flex-wrap: wrap; }
+  .cond-item { flex: 1 1 45%; min-width: 140px; }
+  .cond-div { display: none; }
+  .trims { grid-template-columns: 1fr; }
+  .feats { grid-template-columns: 1fr 1fr; }
+  .sv-layout { grid-template-columns: 1fr; gap: 28px; }
+  .utp-grid { grid-template-columns: 1fr; }
+  .service-grid { grid-template-columns: 1fr; }
+  .form-inner { grid-template-columns: 1fr; gap: 32px; }
+  .form-card { order: -1; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <nav class="nav">
+    <span class="nav-brand">Xiaomi Auto</span>
+    <a class="nav-call" href="tel:+78005550000">+7 (800) 555-00-00</a>
+  </nav>
+  <div class="hero-body">
+    <div class="hero-left">
+      <p class="eyebrow">Электрокроссовер · 2025</p>
+      <h1 class="hero-title">Xiaomi<br><strong>YU7</strong></h1>
+      <p class="hero-subtitle">Новые и с минимальным пробегом · До 10 000 км<br>Прямая поставка · 800В · LiDAR · NVIDIA Thor</p>
+      <div class="hero-utp">
+        <div class="hutp-item">
+          <div class="hutp-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E8B84B" stroke-width="1.2"/><path d="M4.5 7.5L6 9L9.5 5.5" stroke="#E8B84B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><div class="hutp-name">Конечная цена</div><div class="hutp-desc">Никаких скрытых доплат</div></div>
+        </div>
+        <div class="hutp-item">
+          <div class="hutp-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="3" width="11" height="8" rx="1.5" stroke="#E8B84B" stroke-width="1.2"/><path d="M1.5 6h11" stroke="#E8B84B" stroke-width="1.2"/><circle cx="4.5" cy="8.5" r="0.8" fill="#E8B84B"/></svg></div>
+          <div><div class="hutp-name">Оплата тремя частями</div><div class="hutp-desc">Инвойс · логистика · таможня</div></div>
+        </div>
+        <div class="hutp-item">
+          <div class="hutp-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.8 5.2L13 5.8L10 8.7L10.7 13L7 11L3.3 13L4 8.7L1 5.8L5.2 5.2Z" stroke="#E8B84B" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
+          <div><div class="hutp-name">Гарантия от переплат</div><div class="hutp-desc">Фиксируем курс в договоре</div></div>
+        </div>
+      </div>
+      <div class="hero-saving-block">
+        <div class="hero-saving-top"><span class="hero-saving-label">с выгодой от</span><span class="hero-saving-val">1 100 000 ₽</span></div>
+        <div class="hero-saving-sub">по сравнению с ценами на рынке России</div>
+      </div>
+      <div class="cta-row">
+        <button class="btn-primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Оставить заявку</button>
+        <button class="btn-outline" onclick="window.location.href='tel:+78005550000'">Позвонить</button>
+      </div>
+    </div>
+    <div class="hero-right">
+            <div class="car-visual">
+        <img src="ВСТАВЬТЕ_ССЫЛКУ_НА_ФОТО" alt="Xiaomi YU7" style="width:100%;height:auto;border-radius:14px;display:block;object-fit:cover;">
+      </div>
+      <div class="hero-specs">
+        <div class="hs-cell"><div class="hs-val">835<span class="hs-unit"> км</span></div><div class="hs-label">Запас хода</div></div>
+        <div class="hs-cell"><div class="hs-val">3,2<span class="hs-unit"> с</span></div><div class="hs-label">0–100 км/ч</div></div>
+        <div class="hs-cell"><div class="hs-val">690<span class="hs-unit"> л.с.</span></div><div class="hs-label">Мощность Max</div></div>
+        <div class="hs-cell"><div class="hs-val">12<span class="hs-unit"> мин</span></div><div class="hs-label">Зарядка 10→80%</div></div>
+        <div class="hs-cell"><div class="hs-val">253<span class="hs-unit"> км/ч</span></div><div class="hs-label">Макс. скорость</div></div>
+        <div class="hs-cell"><div class="hs-val">800<span class="hs-unit"> В</span></div><div class="hs-label">Платформа</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONDITION STRIP -->
+<div class="cond-strip">
+  <div class="cond-inner">
+    <div class="cond-item">
+      <div class="cond-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.5" stroke="#E8B84B" stroke-width="1.2"/><path d="M6.5 10.5L8.5 12.5L13.5 7.5" stroke="#E8B84B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div><div class="cond-title">Новые и с минимальным пробегом</div><div class="cond-sub">До 10 000 км · как новый</div></div>
+    </div>
+    <div class="cond-div"></div>
+    <div class="cond-item">
+      <div class="cond-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10.5C3 10.5 5 5 10 5C15 5 17 10.5 17 10.5" stroke="#E8B84B" stroke-width="1.2" stroke-linecap="round"/><circle cx="10" cy="12" r="2.5" stroke="#E8B84B" stroke-width="1.2"/></svg></div>
+      <div><div class="cond-title">Пробег до 10 000 км</div><div class="cond-sub">Проверен и задокументирован</div></div>
+    </div>
+    <div class="cond-div"></div>
+    <div class="cond-item">
+      <div class="cond-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="11" rx="2" stroke="#E8B84B" stroke-width="1.2"/><path d="M7 5V4C7 3.44772 7.44772 3 8 3H12C12.5523 3 13 3.44772 13 4V5" stroke="#E8B84B" stroke-width="1.2"/></svg></div>
+      <div><div class="cond-title">Документы в порядке</div><div class="cond-sub">ЭПТС, таможня, СВХ</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- НАЛИЧИЕ -->
+<div class="sec"><div class="sec-inner">
+  <span class="label">Наличие и цены</span>
+  <div class="trims" id="trims">
+    <div class="trim active" onclick="selectTrim(this)">
+      <div style="flex:1">
+        <div class="trim-tag">До 10 000 км</div>
+        <div class="trim-name">С минимальным пробегом</div>
+        <div class="trim-desc">Как новый · Все документы · Проверен</div>
+        <div class="trim-price-line"><span class="trim-from">от</span><span class="trim-price">5 900 000 ₽</span></div>
+      </div>
+      <div class="trim-radio"></div>
+    </div>
+    <div class="trim" onclick="selectTrim(this)">
+      <div style="flex:1">
+        <div class="trim-tag trim-tag-new">0 км · с завода</div>
+        <div class="trim-name">Новый</div>
+        <div class="trim-desc">Прямая поставка · ЭПТС · Таможня</div>
+        <div class="trim-price-line"><span class="trim-from">от</span><span class="trim-price">6 450 000 ₽</span></div>
+      </div>
+      <div class="trim-radio"></div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ТЕХНОЛОГИИ -->
+<div class="sec"><div class="sec-inner">
+  <span class="label">Технологии</span>
+  <div class="feats">
+    <div class="feat"><div class="feat-val">HyperVision</div><div class="feat-desc">Три Mini LED дисплея под лобовым стеклом вместо приборной панели</div></div>
+    <div class="feat"><div class="feat-val">LiDAR + 4D</div><div class="feat-desc">NVIDIA Thor и полный пакет ADAS в каждой комплектации</div></div>
+    <div class="feat"><div class="feat-val">3,11 м²</div><div class="feat-desc">Крупнейший алюминиевый капот среди серийных автомобилей</div></div>
+    <div class="feat"><div class="feat-val">Apple + Mi</div><div class="feat-desc">CarPlay, Apple Watch, iPad и экосистема Xiaomi на борту</div></div>
+  </div>
+</div></div>
+
+<!-- ВЫГОДА -->
+<div class="sec"><div class="sec-inner">
+  <div class="sv-layout">
+    <div>
+      <span class="label">Ваша выгода</span>
+      <h2 class="sv-heading">Привозим дешевле,<br>чем купить в России</h2>
+      <p class="sv-intro">Мы работаем напрямую — без посредников и дилерских наценок.</p>
+      <div class="sv-compare">
+        <div class="sv-price-block sv-ours"><div class="sv-price-label">Цена у нас</div><div class="sv-price-val">от 5 900 000 ₽</div></div>
+        <div class="sv-divider-col"><div class="sv-vs-line"></div><div class="sv-vs-badge">vs</div><div class="sv-vs-line"></div></div>
+        <div class="sv-price-block"><div class="sv-price-label">Рынок России</div><div class="sv-price-val sv-market-val">от 7 000 000 ₽</div></div>
+      </div>
+      <div class="sv-result">
+        <div><div class="sv-result-label">Ваша экономия</div><div class="sv-result-sub">на покупке автомобиля</div></div>
+        <div class="sv-result-val">−1 100 000 ₽</div>
+      </div>
+    </div>
+    <div>
+      <div class="sv-sep"><span class="sv-sep-label">Дополнительные выгоды</span></div>
+      <div class="sv-bonus">
+        <div class="sv-bonus-header">
+          <div class="sv-bonus-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="1.5" y="4" width="15" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 8c1.2 0 2 1.5 4 1.5S13 8 13 8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+          <div class="sv-bonus-title">Оклейка защитной плёнкой в Китае</div>
+          <div class="sv-bonus-save">экономия до 500 000 ₽</div>
+        </div>
+        <div class="sv-bonus-prices">
+          <div class="sv-bp sv-bp-china"><div class="sv-bp-place">В Китае</div><div class="sv-bp-price">~200 000 ₽</div></div>
+          <svg class="sv-bp-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="sv-bp sv-bp-moscow"><div class="sv-bp-place">В Москве</div><div class="sv-bp-price">~700 000 ₽</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ПОЧЕМУ МЫ -->
+<div class="sec sec-soft"><div class="sec-inner">
+  <span class="label">Почему мы</span>
+  <div class="utp-grid">
+    <div class="utp-card">
+      <div class="utp-num">01</div>
+      <div class="utp-name">Конечная цена</div>
+      <div class="utp-desc">Называем итоговую сумму сразу — без скрытых платежей и доплат за растаможку. Цена в договоре = цена при выдаче.</div>
+    </div>
+    <div class="utp-card">
+      <div class="utp-num">02</div>
+      <div class="utp-name">Оплата тремя частями</div>
+      <div class="utp-desc">Платите поэтапно — прозрачно и без сюрпризов:</div>
+      <div class="utp-steps">
+        <div class="utp-step"><span class="utp-step-n">1</span><span>Инвойс за автомобиль — при подтверждении заказа</span></div>
+        <div class="utp-step"><span class="utp-step-n">2</span><span>Логистические расходы — при отправке из Китая</span></div>
+        <div class="utp-step"><span class="utp-step-n">3</span><span>Таможенная пошлина — при получении в России</span></div>
+      </div>
+    </div>
+    <div class="utp-card">
+      <div class="utp-num">03</div>
+      <div class="utp-name">Гарантия от переплат</div>
+      <div class="utp-desc">Фиксируем курс и стоимость в договоре. Если расходы вырастут — разницу берём на себя. Платите ровно столько, сколько договорились.</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- СЕРВИС -->
+<div class="sec"><div class="sec-inner">
+  <span class="label">Сервис</span>
+  <div class="service-grid">
+    <div class="service-card">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.3"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg></div>
+      <div class="service-name">Онлайн-трекинг</div>
+      <div class="service-desc">Отслеживайте автомобиль в реальном времени — от завода в Пекине до вашего города</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="4" y="3" width="16" height="18" rx="2" stroke="currentColor" stroke-width="1.3"/><path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+      <div class="service-name">Регистрация в ГИБДД</div>
+      <div class="service-desc">Оформляем ЭПТС, ставим на учёт под ключ — вы получаете авто с готовыми номерами</div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12l9-7 9 7" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="service-name">Доставка к дому</div>
+      <div class="service-desc">Привозим в любой город России. Принимаете дома — без поездок в офис</div>
+    </div>
+  </div>
+</div></div>
+
+<!-- ФОРМА -->
+<div class="form-wrap" id="form">
+  <div class="form-inner">
+    <div>
+      <span class="label label-gold">Заявка</span>
+      <h2 class="form-heading">Подобрать<br>автомобиль</h2>
+      <p class="form-sub">Выберите нужный вариант — менеджер свяжется и озвучит актуальные условия покупки и доставки</p>
+      <div class="form-promise">
+        <div class="fp-item"><div class="fp-dot"></div><div class="fp-text">Ответим в течение 15 минут</div></div>
+        <div class="fp-item"><div class="fp-dot"></div><div class="fp-text">Назовём конечную цену без скрытых доплат</div></div>
+        <div class="fp-item"><div class="fp-dot"></div><div class="fp-text">Расскажем о сроках и документах</div></div>
+      </div>
+    </div>
+    <div class="form-card">
+      <span class="chip-label">Какой автомобиль вас интересует?</span>
+      <div class="chips" id="chips1">
+        <span class="chip on" onclick="pickChip(this,'chips1')">Новый</span>
+        <span class="chip" onclick="pickChip(this,'chips1')">С минимальным пробегом</span>
+      </div>
+      <span class="chip-label">Способ покупки</span>
+      <div class="chips" id="chips2">
+        <span class="chip on" onclick="pickChip(this,'chips2')">Полная оплата</span>
+        <span class="chip" onclick="pickChip(this,'chips2')">Кредит</span>
+        <span class="chip" onclick="pickChip(this,'chips2')">Trade-in</span>
+      </div>
+      <div class="field-row">
+        <input type="text" placeholder="Ваше имя">
+        <input type="tel" placeholder="Телефон">
+      </div>
+      <div class="field-row">
+        <input type="text" placeholder="Город доставки" class="field-full">
+      </div>
+      <button class="submit">Отправить заявку</button>
+      <p class="form-legal">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных. Автомобиль поставляется по схеме параллельного импорта. Цены ориентировочные.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-brand">Xiaomi Auto</span>
+    <p class="footer-text">© 2025 Авторизованный дилер. Сайт носит информационный характер и не является публичной офертой. Xiaomi Auto официально не поставляется в РФ — доставка по схеме параллельного импорта.</p>
+  </div>
+</footer>
+
+<script>
+function selectTrim(el) {
+  document.querySelectorAll('.trim').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+}
+function pickChip(el, groupId) {
+  document.querySelectorAll('#' + groupId + ' .chip').forEach(c => c.classList.remove('on'));
+  el.classList.add('on');
+}
+</script>
