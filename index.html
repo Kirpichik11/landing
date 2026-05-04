@@ -210,6 +210,40 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .about-sec { background: #0d0d0d; }
 .about-sec .label { color: rgba(232,184,75,0.5); }
 .about-layout { display: grid; grid-template-columns: 280px 1fr; gap: 60px; align-items: start; }
+.about-founder {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+}
+.about-founder-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(232,184,75,0.15);
+  border: 1.5px solid rgba(232,184,75,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 700;
+  color: var(--gold);
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+}
+.about-founder-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+.about-founder-role {
+  font-size: 12px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 400;
+}
+
 .about-stats { display: flex; flex-direction: row; border: 1px solid rgba(255,255,255,0.08); border-radius: var(--radius); overflow: hidden; }
 .about-stat { flex: 1; padding: 20px 18px; border-right: 1px solid rgba(255,255,255,0.07); }
 .about-stat:last-child { border-right: none; }
@@ -377,7 +411,7 @@ input::placeholder { color: var(--text-light); }
         </div>
         <div class="hutp-item">
           <div class="hutp-icon"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5L8.8 5.2L13 5.8L10 8.7L10.7 13L7 11L3.3 13L4 8.7L1 5.8L5.2 5.2Z" stroke="#E8B84B" stroke-width="1.2" stroke-linejoin="round"/></svg></div>
-          <div><div class="hutp-name">Гарантия от переплат</div><div class="hutp-desc">Фиксируем стоимость в договоре</div></div>
+          <div><div class="hutp-name">Гарантия от переплат</div><div class="hutp-desc">Фиксируем курс в договоре</div></div>
         </div>
       </div>
       <div class="hero-saving-block">
@@ -385,7 +419,7 @@ input::placeholder { color: var(--text-light); }
         <div class="hero-saving-mid"><span class="hero-saving-val">1 100 000 ₽</span><span class="hero-saving-note"> по сравнению с рынком России</span></div>
       </div>
       <div class="cta-row">
-        <button class="btn-primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Выбрать автомобиль</button>
+        <button class="btn-primary" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">Оставить заявку</button>
         <button class="btn-outline" onclick="window.location.href='tel:+78005550000'">Позвонить</button>
       </div>
     </div>
@@ -420,7 +454,7 @@ input::placeholder { color: var(--text-light); }
     <div class="cond-div"></div>
     <div class="cond-item">
       <div class="cond-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="5" width="14" height="11" rx="2" stroke="#E8B84B" stroke-width="1.2"/><path d="M7 5V4C7 3.44772 7.44772 3 8 3H12C12.5523 3 13 3.44772 13 4V5" stroke="#E8B84B" stroke-width="1.2"/></svg></div>
-      <div><div class="cond-title">С документами под ключ</div><div class="cond-sub">экспорт, таможня, лаборатория</div></div>
+      <div><div class="cond-title">Документы в порядке</div><div class="cond-sub">ЭПТС, таможня, СВХ</div></div>
     </div>
   </div>
 </div>
@@ -511,14 +545,14 @@ input::placeholder { color: var(--text-light); }
       <div class="utp-desc">Платите поэтапно — прозрачно и без сюрпризов:</div>
       <div class="utp-steps">
         <div class="utp-step"><span class="utp-step-n">1</span><span>Инвойс за автомобиль — при подтверждении заказа</span></div>
-        <div class="utp-step"><span class="utp-step-n">2</span><span>Логистические расходы — при отправке автомобиля</span></div>
+        <div class="utp-step"><span class="utp-step-n">2</span><span>Логистические расходы — при отправке из Китая</span></div>
         <div class="utp-step"><span class="utp-step-n">3</span><span>Таможенная пошлина — при растаможке в России</span></div>
       </div>
     </div>
     <div class="utp-card">
       <div class="utp-num">03</div>
       <div class="utp-name">Гарантия от переплат</div>
-      <div class="utp-desc">Фиксируем стоимость в договоре. Если расходы вырастут — разницу берём на себя. Платите ровно столько, сколько договорились.</div>
+      <div class="utp-desc">Фиксируем курс и стоимость в договоре. Если расходы вырастут — разницу берём на себя. Платите ровно столько, сколько договорились.</div>
     </div>
   </div>
 </div></div>
@@ -550,9 +584,16 @@ input::placeholder { color: var(--text-light); }
   <div class="about-layout">
     <div class="about-left">
       <span class="label">О компании</span>
+      <div class="about-founder">
+        <div class="about-founder-avatar">ДБ</div>
+        <div class="about-founder-info">
+          <div class="about-founder-name">Безруков Демьян Петрович</div>
+          <div class="about-founder-role">Основатель · Автоход</div>
+        </div>
+      </div>
       <div class="about-stats">
         <div class="about-stat"><div class="about-stat-val">2011</div><div class="about-stat-label">год основания</div></div>
-        <div class="about-stat"><div class="about-stat-val">10+</div><div class="about-stat-label">лет в поставках авто</div></div>
+        <div class="about-stat"><div class="about-stat-val">10+</div><div class="about-stat-label">лет в поставках</div></div>
         <div class="about-stat"><div class="about-stat-val">30+</div><div class="about-stat-label">сервисных центров</div></div>
       </div>
     </div>
@@ -570,7 +611,7 @@ input::placeholder { color: var(--text-light); }
   <div class="form-inner">
     <div>
       <span class="label label-gold">Заявка</span>
-      <h2 class="form-heading">Выбрать<br>автомобиль</h2>
+      <h2 class="form-heading">Подобрать<br>автомобиль</h2>
       <p class="form-sub">Выберите нужный вариант — менеджер свяжется и озвучит актуальные условия покупки и доставки</p>
       <div class="form-promise">
         <div class="fp-item"><div class="fp-dot"></div><div class="fp-text">Ответим в течение 15 минут</div></div>
@@ -598,7 +639,7 @@ input::placeholder { color: var(--text-light); }
       <div class="field-row">
         <input type="text" name="Город" placeholder="Город доставки" class="field-full">
       </div>
-      <button type="submit" class="submit">Выбрать автомобиль</button>
+      <button type="submit" class="submit">Отправить заявку</button>
       <p class="form-legal">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных. Автомобиль поставляется по схеме параллельного импорта. Цены ориентировочные.</p>
     </form>
   </div>
