@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Xiaomi YU7 — купить в России</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -25,43 +33,16 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 }
 .label-gold { color: rgba(232,184,75,0.5); }
 
-/* ─── HERO ─── */
-.hero {
-  background: #0d0d0d;
-  min-height: 100svh;
-  display: flex; flex-direction: column;
-  position: relative; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 70% 80% at 75% 40%, rgba(232,184,75,0.055) 0%, transparent 65%),
-    radial-gradient(ellipse 40% 60% at 10% 90%, rgba(255,255,255,0.015) 0%, transparent 60%);
-}
-.hero-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
+/* HERO */
+.hero { background: #0d0d0d; min-height: 100svh; display: flex; flex-direction: column; position: relative; overflow: hidden; }
+.hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 75% 40%, rgba(232,184,75,0.055) 0%, transparent 65%), radial-gradient(ellipse 40% 60% at 10% 90%, rgba(255,255,255,0.015) 0%, transparent 60%); }
+.hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px); background-size: 60px 60px; }
 
-.nav {
-  position: relative; z-index: 10;
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 28px var(--pad);
-  max-width: var(--max); margin: 0 auto; width: 100%;
-}
+.nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 28px var(--pad); max-width: var(--max); margin: 0 auto; width: 100%; }
 .nav-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.85); }
 .nav-call { font-size: 13px; font-weight: 500; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(232,184,75,0.3); padding-bottom: 2px; }
 
-.hero-body {
-  position: relative; z-index: 2; flex: 1;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-  max-width: var(--max); margin: 0 auto;
-  padding: 32px var(--pad) 60px; width: 100%;
-}
-
+.hero-body { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: var(--max); margin: 0 auto; padding: 32px var(--pad) 60px; width: 100%; }
 .hero-left { display: flex; flex-direction: column; }
 
 .eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.28); margin-bottom: 16px; }
@@ -97,7 +78,7 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .hs-unit { font-size: 11px; font-weight: 300; color: rgba(255,255,255,0.3); }
 .hs-label { font-size: 10px; color: rgba(255,255,255,0.28); }
 
-/* ─── COND STRIP ─── */
+/* COND STRIP */
 .cond-strip { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); }
 .cond-inner { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); display: flex; align-items: stretch; }
 .cond-item { flex: 1; display: flex; align-items: center; gap: 12px; padding: 20px 12px; }
@@ -106,13 +87,12 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .cond-sub { font-size: 10px; color: rgba(255,255,255,0.28); }
 .cond-div { width: 1px; background: rgba(255,255,255,0.07); margin: 14px 0; }
 
-/* ─── SECTION ─── */
+/* SECTIONS */
 .sec { border-bottom: 1px solid var(--border); }
 .sec-inner { max-width: var(--max); margin: 0 auto; padding: clamp(40px, 5vw, 72px) var(--pad); }
 .sec-soft { background: var(--bg-soft); }
-.sec-dark { background: #0d0d0d; }
 
-/* ─── TRIMS ─── */
+/* TRIMS */
 .trims { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .trim { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; cursor: pointer; transition: border-color .18s; background: var(--bg); display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
 .trim.active { border: 1.5px solid var(--text); }
@@ -127,13 +107,13 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .trim.active .trim-radio { background: var(--text); border-color: var(--text); }
 .trim.active .trim-radio::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #fff; }
 
-/* ─── FEATS ─── */
+/* FEATS */
 .feats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
 .feat { background: var(--bg-soft); border-radius: var(--radius-sm); padding: 20px; }
 .feat-val { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
 .feat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
 
-/* ─── SAVINGS ─── */
+/* SAVINGS */
 .sv-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
 .sv-heading { font-size: clamp(22px, 3vw, 36px); font-weight: 500; letter-spacing: -0.8px; line-height: 1.15; margin-bottom: 10px; }
 .sv-intro { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 24px; }
@@ -165,7 +145,7 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .sv-bp-moscow .sv-bp-price { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; color: var(--text-muted); text-decoration: line-through; text-decoration-color: rgba(0,0,0,0.2); }
 .sv-bp-arrow { color: var(--text-light); flex-shrink: 0; margin: 0 12px; }
 
-/* ─── УТП ─── */
+/* УТП */
 .utp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .utp-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
 .utp-num { font-size: 11px; font-weight: 700; color: var(--gold); letter-spacing: 1.5px; margin-bottom: 12px; }
@@ -175,14 +155,14 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .utp-step { display: flex; align-items: flex-start; gap: 10px; font-size: 12px; color: var(--text-muted); line-height: 1.45; }
 .utp-step-n { flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; background: var(--bg-soft); border: 1px solid var(--border); font-size: 10px; font-weight: 700; color: var(--text); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
 
-/* ─── СЕРВИС ─── */
+/* СЕРВИС */
 .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .service-card { border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; }
 .service-icon { width: 44px; height: 44px; background: var(--bg-soft); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
 .service-name { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
 .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; }
 
-/* ─── FORM ─── */
+/* FORM */
 .form-wrap { background: #0d0d0d; }
 .form-inner { max-width: var(--max); margin: 0 auto; padding: clamp(40px, 5vw, 72px) var(--pad); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
 .form-heading { font-size: clamp(26px, 3.5vw, 44px); font-weight: 500; letter-spacing: -1px; color: #fff; margin-bottom: 10px; line-height: 1.05; }
@@ -198,20 +178,20 @@ body { font-family: var(--font); color: var(--text); background: var(--bg); -web
 .chip.on { border-color: var(--text); color: var(--text); font-weight: 600; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 .field-full { grid-column: 1 / -1; }
-input[type=text], input[type=tel] { width: 100%; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px 14px; font-family: var(--font); font-size: 14px; color: var(--text); outline: none; transition: border-color .15s; -webkit-appearance: none; }
+input[type=text], input[type=tel] { width: 100%; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 13px 14px; font-family: var(--font); font-size: 16px; color: var(--text); outline: none; transition: border-color .15s; -webkit-appearance: none; }
 input:focus { border-color: #999; background: var(--bg); }
 input::placeholder { color: var(--text-light); }
 .submit { width: 100%; margin-top: 14px; background: var(--text); color: var(--bg); border: none; border-radius: var(--radius-sm); padding: 15px; font-family: var(--font); font-size: 14px; font-weight: 600; cursor: pointer; transition: opacity .15s; }
 .submit:hover { opacity: 0.82; }
 .form-legal { font-size: 10px; color: var(--text-light); line-height: 1.6; margin-top: 10px; }
 
-/* ─── FOOTER ─── */
+/* FOOTER */
 .footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.05); padding: 22px var(--pad); }
 .footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
 .footer-brand { font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); }
 .footer-text { font-size: 10px; color: rgba(255,255,255,0.18); line-height: 1.6; max-width: 620px; }
 
-/* ─── ANIMATIONS ─── */
+/* ANIMATIONS */
 @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 .hero-left > * { animation: fadeUp .6s ease both; }
 .hero-left > :nth-child(1) { animation-delay: .05s; }
@@ -222,27 +202,122 @@ input::placeholder { color: var(--text-light); }
 .hero-left > :nth-child(6) { animation-delay: .3s; }
 .hero-right { animation: fadeUp .7s .15s ease both; }
 
-/* ─── MOBILE ─── */
-@media (max-width: 800px) {
-  :root { --pad: 20px; }
-  .hero-body { grid-template-columns: 1fr; gap: 28px; padding-bottom: 40px; }
+/* ─── МОБИЛЬНАЯ ВЕРСИЯ ─── */
+@media (max-width: 768px) {
+  :root { --pad: 18px; }
+
+  /* nav */
+  .nav { padding: 20px var(--pad); }
+  .nav-brand { font-size: 12px; }
+  .nav-call { font-size: 15px; }
+
+  /* hero — одна колонка, картинка сверху */
+  .hero-body {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 16px var(--pad) 36px;
+    align-items: start;
+  }
   .hero-right { order: -1; }
-  .hero-title { font-size: 52px; letter-spacing: -2px; }
-  .hero-subtitle { max-width: 100%; }
-  .cond-inner { flex-wrap: wrap; }
-  .cond-item { flex: 1 1 45%; min-width: 140px; }
+  .hero-left { order: 1; }
+
+  /* типографика */
+  .eyebrow { font-size: 11px; margin-bottom: 10px; }
+  .hero-title { font-size: 52px; letter-spacing: -2px; margin-bottom: 14px; line-height: 0.95; }
+  .hero-subtitle { font-size: 14px; max-width: 100%; margin-bottom: 20px; }
+
+  /* уТП плашки */
+  .hutp-item { padding: 13px 14px; gap: 12px; }
+  .hutp-name { font-size: 14px; }
+  .hutp-desc { font-size: 12px; }
+
+  /* выгода в hero */
+  .hero-saving-block { padding: 16px; margin-bottom: 18px; }
+  .hero-saving-val { font-size: 30px; }
+  .hero-saving-label { font-size: 14px; }
+  .hero-saving-sub { font-size: 12px; }
+
+  /* кнопки — стопкой */
+  .cta-row { flex-direction: column; gap: 10px; }
+  .btn-primary { padding: 16px; font-size: 15px; text-align: center; width: 100%; }
+  .btn-outline { padding: 15px; font-size: 15px; text-align: center; width: 100%; }
+
+  /* specs под картинкой */
+  .hero-specs { grid-template-columns: repeat(3, 1fr); }
+  .hs-val { font-size: 17px; }
+  .hs-label { font-size: 10px; }
+  .hs-cell { padding: 11px 8px; }
+
+  /* полоска состояния — вертикально */
+  .cond-inner { flex-direction: column; padding: 0 var(--pad); }
+  .cond-item { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .cond-item:last-child { border-bottom: none; }
   .cond-div { display: none; }
-  .trims { grid-template-columns: 1fr; }
-  .feats { grid-template-columns: 1fr 1fr; }
-  .sv-layout { grid-template-columns: 1fr; gap: 28px; }
-  .utp-grid { grid-template-columns: 1fr; }
-  .service-grid { grid-template-columns: 1fr; }
-  .form-inner { grid-template-columns: 1fr; gap: 32px; }
-  .form-card { order: -1; }
+  .cond-title { font-size: 14px; }
+  .cond-sub { font-size: 12px; }
+
+  /* секции */
+  .sec-inner { padding: 28px var(--pad); }
+  .label { font-size: 11px; margin-bottom: 14px; }
+
+  /* карточки цен — одна колонка */
+  .trims { grid-template-columns: 1fr; gap: 10px; }
+  .trim { padding: 20px; }
+  .trim-name { font-size: 18px; }
+  .trim-desc { font-size: 13px; }
+  .trim-price { font-size: 28px; }
+
+  /* технологии — 2 колонки */
+  .feats { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .feat { padding: 16px; }
+  .feat-val { font-size: 14px; }
+  .feat-desc { font-size: 12px; }
+
+  /* выгода — одна колонка */
+  .sv-layout { grid-template-columns: 1fr; gap: 24px; }
+  .sv-heading { font-size: 24px; }
+  .sv-intro { font-size: 14px; }
+  .sv-price-val { font-size: 18px; }
+  .sv-result { padding: 16px 18px; flex-wrap: wrap; gap: 8px; }
+  .sv-result-val { font-size: 24px; }
+  .sv-result-label { font-size: 14px; }
+  .sv-bonus-title { font-size: 15px; }
+  .sv-bp-china .sv-bp-price, .sv-bp-moscow .sv-bp-price { font-size: 20px; }
+  .sv-bonus-prices { padding: 16px; }
+  .sv-sep { margin-top: 4px; }
+
+  /* почему мы — одна колонка */
+  .utp-grid { grid-template-columns: 1fr; gap: 10px; }
+  .utp-card { padding: 20px; }
+  .utp-name { font-size: 17px; }
+  .utp-desc { font-size: 14px; }
+  .utp-step { font-size: 13px; }
+
+  /* сервис — одна колонка */
+  .service-grid { grid-template-columns: 1fr; gap: 10px; }
+  .service-card { padding: 20px; display: flex; align-items: flex-start; gap: 16px; }
+  .service-icon { flex-shrink: 0; margin-bottom: 0; }
+  .service-name { font-size: 16px; }
+  .service-desc { font-size: 14px; }
+
+  /* форма — одна колонка, карточка сверху */
+  .form-inner { grid-template-columns: 1fr; gap: 0; padding: 28px var(--pad); }
+  .form-card { order: -1; margin-bottom: 28px; padding: 22px; }
+  .form-heading { font-size: 30px; }
+  .form-sub { font-size: 14px; }
+  .fp-text { font-size: 14px; }
+  .chip { font-size: 13px; padding: 9px 16px; }
+  .chip-label { font-size: 11px; }
+  .field-row { grid-template-columns: 1fr; }
+  .submit { font-size: 16px; padding: 16px; }
+
+  /* футер */
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .footer-text { font-size: 11px; }
 }
 </style>
-
+</head>
+<body>
 
 <!-- HERO -->
 <section class="hero">
@@ -281,7 +356,7 @@ input::placeholder { color: var(--text-light); }
       </div>
     </div>
     <div class="hero-right">
-            <div class="car-visual">
+      <div class="car-visual">
         <img src="https://raw.githubusercontent.com/Kirpichik11/landing/main/car.png" alt="Xiaomi YU7" style="width:100%;height:auto;border-radius:14px;display:block;object-fit:cover;">
       </div>
       <div class="hero-specs">
@@ -449,7 +524,8 @@ input::placeholder { color: var(--text-light); }
         <div class="fp-item"><div class="fp-dot"></div><div class="fp-text">Расскажем о сроках и документах</div></div>
       </div>
     </div>
-    <div class="form-card">
+    <form name="contact" method="POST" data-netlify="true" class="form-card">
+      <input type="hidden" name="form-name" value="contact">
       <span class="chip-label">Какой автомобиль вас интересует?</span>
       <div class="chips" id="chips1">
         <span class="chip on" onclick="pickChip(this,'chips1')">Новый</span>
@@ -462,15 +538,15 @@ input::placeholder { color: var(--text-light); }
         <span class="chip" onclick="pickChip(this,'chips2')">Trade-in</span>
       </div>
       <div class="field-row">
-        <input type="text" placeholder="Ваше имя">
-        <input type="tel" placeholder="Телефон">
+        <input type="text" name="Имя" placeholder="Ваше имя">
+        <input type="tel" name="Телефон" placeholder="Телефон">
       </div>
       <div class="field-row">
-        <input type="text" placeholder="Город доставки" class="field-full">
+        <input type="text" name="Город" placeholder="Город доставки" class="field-full">
       </div>
-      <button class="submit">Отправить заявку</button>
+      <button type="submit" class="submit">Отправить заявку</button>
       <p class="form-legal">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных. Автомобиль поставляется по схеме параллельного импорта. Цены ориентировочные.</p>
-    </div>
+    </form>
   </div>
 </div>
 
@@ -492,3 +568,5 @@ function pickChip(el, groupId) {
   el.classList.add('on');
 }
 </script>
+</body>
+</html>
